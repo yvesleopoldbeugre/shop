@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopStyle - Votre boutique en ligne</title>
+    <link rel="icon" type="image/x-icon" href="/logo/logo.png">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">ShopStyle</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="btn-icon">🔍</button>
+                <button class="btn-icon">👤</button>
+                <button class="btn-icon">🛒 <span class="badge">0</span></button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="accueil">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Découvrez notre Collection Automne/Hiver 2025</h1>
+            <p>Des produits de qualité sélectionnés avec soin pour vous</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Découvrir</button>
+                <button class="btn btn-secondary">Voir les offres</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories" id="categories">
+    <div class="container">
+        <h2 class="section-title">Nos Catégories</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">👔</div>
+                <h3>Mode Homme</h3>
+                <p>Tendances & Styles</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👗</div>
+                <h3>Mode Femme</h3>
+                <p>Élégance & Confort</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>Électronique</h3>
+                <p>High-Tech</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <h3>Maison & Déco</h3>
+                <p>Intérieur Design</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="products" id="produits">
+    <div class="container">
+        <h2 class="section-title">Produits Vedettes</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-badge">-20%</div>
+                <div class="product-image">🖼️</div>
+                <div class="product-info">
+                    <h3>Chemise Classique</h3>
+                    <p class="product-description">Coton premium, coupe moderne</p>
+                    <div class="product-price">
+                        <span class="price-old">50€</span>
+                        <span class="price-new">40€</span>
+                    </div>
+                    <button class="btn-add-cart">Ajouter au panier</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-badge new">Nouveau</div>
+                <div class="product-image">🖼️</div>
+                <div class="product-info">
+                    <h3>Sneakers Sport</h3>
+                    <p class="product-description">Confort ultime</p>
+                    <div class="product-price">
+                        <span class="price-new">75€</span>
+                    </div>
+                    <button class="btn-add-cart">Ajouter au panier</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🖼️</div>
+                <div class="product-info">
+                    <h3>Sac à Main</h3>
+                    <p class="product-description">Cuir véritable</p>
+                    <div class="product-price">
+                        <span class="price-new">120€</span>
+                    </div>
+                    <button class="btn-add-cart">Ajouter au panier</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-badge">-15%</div>
+                <div class="product-image">🖼️</div>
+                <div class="product-info">
+                    <h3>Montre Élégante</h3>
+                    <p class="product-description">Design minimaliste</p>
+                    <div class="product-price">
+                        <span class="price-old">200€</span>
+                        <span class="price-new">170€</span>
+                    </div>
+                    <button class="btn-add-cart">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="container">
+        <h2>Restez informé de nos offres</h2>
+        <p>Inscrivez-vous à notre newsletter et recevez -10% sur votre première commande</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Votre adresse email" required>
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>ShopStyle</h4>
+                <p>Votre destination shopping en ligne de confiance depuis 2020</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Livraison</a></li>
+                    <li><a href="#">Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Service Client</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Suivi commande</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopStyle. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

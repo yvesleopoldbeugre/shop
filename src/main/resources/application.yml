@@ -1,0 +1,24 @@
+logging:
+  level:
+    org.springframework: error
+
+server:
+  port: 9000
+  address: 0.0.0.0
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gestion_produit?serverTimezone=UTC
+    username: beugre
+    password: "17101998mM@#"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    # show-sql: true
+
+produit:
+  currentPage: 1

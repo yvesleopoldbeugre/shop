@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-shirt Classique Premium - ShopStyle</title>
+    <link rel="stylesheet" th:href="@{/css/infoProduct.css}">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">ShopStyle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="products.html">Produits</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="btn-icon">🔍</button>
+                <button class="btn-icon">👤</button>
+                <button class="btn-icon">🛒 <span class="badge">3</span></button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <div class="container">
+        <a href="index.html">Accueil</a> /
+        <a href="products.html">Produits</a> /
+        <a href="#">Mode Homme</a> /
+        <span>T-shirt Classique Premium</span>
+    </div>
+</div>
+
+<!-- Product Detail Section -->
+<section class="product-detail">
+    <div class="container">
+        <div class="product-layout">
+            <!-- Product Images -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <span class="badge-sale">-25%</span>
+                    <span class="badge-new">Nouveau</span>
+                    <div class="image-placeholder">👕</div>
+                    <button class="zoom-btn">🔍</button>
+                </div>
+                <div class="thumbnail-list">
+                    <div class="thumbnail active">
+                        <div class="thumb-placeholder">👕</div>
+                    </div>
+                    <div class="thumbnail">
+                        <div class="thumb-placeholder">👕</div>
+                    </div>
+                    <div class="thumbnail">
+                        <div class="thumb-placeholder">👕</div>
+                    </div>
+                    <div class="thumbnail">
+                        <div class="thumb-placeholder">👕</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <div class="product-category">Mode Homme</div>
+                <h1 class="product-title">T-shirt Classique Premium</h1>
+
+                <div class="product-rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="rating-count">(124 avis clients)</span>
+                    <a href="#reviews" class="write-review">Écrire un avis</a>
+                </div>
+
+                <div class="product-price">
+                    <span class="price-current">30€</span>
+                    <span class="price-old">40€</span>
+                    <span class="discount">-25%</span>
+                </div>
+
+                <div class="product-description">
+                    <p>T-shirt classique en coton premium, parfait pour un style décontracté et élégant. Coupe moderne et confortable pour un port quotidien. Tissu respirant de haute qualité.</p>
+                </div>
+
+                <!-- Product Options -->
+                <div class="product-options">
+                    <!-- Color Selection -->
+                    <div class="option-group">
+                        <label class="option-label">Couleur: <strong>Bleu Marine</strong></label>
+                        <div class="color-selector">
+                            <button class="color-option active" style="background: #1e3a8a;" title="Bleu Marine"></button>
+                            <button class="color-option" style="background: #000;" title="Noir"></button>
+                            <button class="color-option" style="background: #fff; border: 1px solid #ddd;" title="Blanc"></button>
+                            <button class="color-option" style="background: #dc2626;" title="Rouge"></button>
+                            <button class="color-option" style="background: #059669;" title="Vert"></button>
+                        </div>
+                    </div>
+
+                    <!-- Size Selection -->
+                    <div class="option-group">
+                        <label class="option-label">Taille: <strong>M</strong></label>
+                        <div class="size-selector">
+                            <button class="size-option">XS</button>
+                            <button class="size-option">S</button>
+                            <button class="size-option active">M</button>
+                            <button class="size-option">L</button>
+                            <button class="size-option">XL</button>
+                            <button class="size-option">XXL</button>
+                        </div>
+                        <a href="#size-guide" class="size-guide-link">📏 Guide des tailles</a>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="option-group">
+                        <label class="option-label">Quantité:</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="10" class="qty-input">
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <span class="stock-status">✓ En stock (48 disponibles)</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="product-actions">
+                    <button class="btn btn-primary btn-add-cart">
+                        🛒 Ajouter au panier
+                    </button>
+                    <button class="btn btn-secondary btn-buy-now">
+                        ⚡ Acheter maintenant
+                    </button>
+                    <button class="btn-wishlist">
+                        ❤️
+                    </button>
+                </div>
+
+                <!-- Product Meta -->
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <strong>SKU:</strong> <span>TSH-001-BLU</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Catégorie:</strong> <a href="#">Mode Homme</a>, <a href="#">T-shirts</a>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Tags:</strong> <a href="#">Classique</a>, <a href="#">Coton</a>, <a href="#">Casual</a>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="product-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🚚</span>
+                        <div>
+                            <strong>Livraison Gratuite</strong>
+                            <p>Pour toute commande supérieure à 50€</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">↩️</span>
+                        <div>
+                            <strong>Retours Gratuits</strong>
+                            <p>Sous 30 jours</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <div>
+                            <strong>Paiement Sécurisé</strong>
+                            <p>Protection des données garantie</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Share -->
+                <div class="product-share">
+                    <span>Partager:</span>
+                    <div class="share-buttons">
+                        <button class="share-btn facebook">Facebook</button>
+                        <button class="share-btn twitter">Twitter</button>
+                        <button class="share-btn pinterest">Pinterest</button>
+                        <button class="share-btn whatsapp">WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product Details Tabs -->
+<section class="product-tabs">
+    <div class="container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="description">Description</button>
+            <button class="tab-btn" data-tab="additional">Informations</button>
+            <button class="tab-btn" data-tab="reviews">Avis (124)</button>
+            <button class="tab-btn" data-tab="shipping">Livraison</button>
+        </div>
+
+        <div class="tabs-content">
+            <!-- Description Tab -->
+            <div class="tab-panel active" id="description">
+                <h3>Description du produit</h3>
+                <p>Notre T-shirt Classique Premium est conçu pour allier confort et style. Fabriqué à partir de 100% coton peigné de qualité supérieure, il offre une douceur exceptionnelle et une durabilité remarquable.</p>
+
+                <h4>Caractéristiques principales :</h4>
+                <ul>
+                    <li>Tissu en coton premium 100% naturel</li>
+                    <li>Coupe moderne et ajustée pour un look élégant</li>
+                    <li>Col rond renforcé pour une meilleure tenue</li>
+                    <li>Coutures doubles pour une durabilité accrue</li>
+                    <li>Respirant et confortable pour un port toute la journée</li>
+                    <li>Facile d'entretien : lavable en machine à 30°C</li>
+                </ul>
+
+                <h4>Composition :</h4>
+                <p>100% Coton peigné (180 g/m²)</p>
+
+                <h4>Entretien :</h4>
+                <p>Lavage en machine à 30°C maximum. Ne pas utiliser d'eau de javel. Repassage à basse température. Séchage en tambour déconseillé.</p>
+            </div>
+
+            <!-- Additional Info Tab -->
+            <div class="tab-panel" id="additional">
+                <h3>Informations complémentaires</h3>
+                <table class="info-table">
+                    <tr>
+                        <th>Poids</th>
+                        <td>180 g</td>
+                    </tr>
+                    <tr>
+                        <th>Dimensions</th>
+                        <td>Voir guide des tailles</td>
+                    </tr>
+                    <tr>
+                        <th>Couleurs disponibles</th>
+                        <td>Bleu Marine, Noir, Blanc, Rouge, Vert</td>
+                    </tr>
+                    <tr>
+                        <th>Tailles disponibles</th>
+                        <td>XS, S, M, L, XL, XXL</td>
+                    </tr>
+                    <tr>
+                        <th>Matière</th>
+                        <td>100% Coton</td>
+                    </tr>
+                    <tr>
+                        <th>Pays d'origine</th>
+                        <td>Portugal</td>
+                    </tr>
+                    <tr>
+                        <th>Marque</th>
+                        <td>ShopStyle Premium</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div class="tab-panel" id="reviews">
+                <h3>Avis clients</h3>
+
+                <div class="reviews-summary">
+                    <div class="rating-overview">
+                        <div class="rating-score">4.8</div>
+                        <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-count">Basé sur 124 avis</div>
+                    </div>
+                    <div class="rating-breakdown">
+                        <div class="rating-bar">
+                            <span>5 étoiles</span>
+                            <div class="bar"><div class="fill" style="width: 85%"></div></div>
+                            <span>106</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>4 étoiles</span>
+                            <div class="bar"><div class="fill" style="width: 10%"></div></div>
+                            <span>12</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>3 étoiles</span>
+                            <div class="bar"><div class="fill" style="width: 3%"></div></div>
+                            <span>4</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>2 étoiles</span>
+                            <div class="bar"><div class="fill" style="width: 1%"></div></div>
+                            <span>1</span>
+                        </div>
+                        <div class="rating-bar">
+                            <span>1 étoile</span>
+                            <div class="bar"><div class="fill" style="width: 1%"></div></div>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">JD</div>
+                                <div>
+                                    <strong class="reviewer-name">Jean Dupont</strong>
+                                    <div class="review-date">Il y a 2 jours</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-content">
+                            <p>Excellent produit ! La qualité du coton est vraiment au rendez-vous. Le t-shirt est confortable et la coupe est parfaite. Je recommande vivement !</p>
+                        </div>
+                        <div class="review-footer">
+                            <button class="review-helpful">👍 Utile (12)</button>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">ML</div>
+                                <div>
+                                    <strong class="reviewer-name">Marie Laurent</strong>
+                                    <div class="review-date">Il y a 5 jours</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-content">
+                            <p>Acheté pour mon mari, il adore ! Le tissu est doux et respirant. Parfait pour l'été.</p>
+                        </div>
+                        <div class="review-footer">
+                            <button class="review-helpful">👍 Utile (8)</button>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">PM</div>
+                                <div>
+                                    <strong class="reviewer-name">Pierre Martin</strong>
+                                    <div class="review-date">Il y a 1 semaine</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐☆</div>
+                        </div>
+                        <div class="review-content">
+                            <p>Très bon rapport qualité-prix. La couleur est conforme à la photo. Seul petit bémol, taille légèrement petit, je recommande de prendre une taille au-dessus.</p>
+                        </div>
+                        <div class="review-footer">
+                            <button class="review-helpful">👍 Utile (5)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline load-more">Voir plus d'avis</button>
+
+                <div class="write-review-section">
+                    <h3>Écrire un avis</h3>
+                    <form class="review-form">
+                        <div class="form-group">
+                            <label>Votre note</label>
+                            <div class="star-rating">
+                                <span class="star" data-rating="1">☆</span>
+                                <span class="star" data-rating="2">☆</span>
+                                <span class="star" data-rating="3">☆</span>
+                                <span class="star" data-rating="4">☆</span>
+                                <span class="star" data-rating="5">☆</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Votre nom</label>
+                            <input type="text" placeholder="Entrez votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Votre avis</label>
+                            <textarea rows="5" placeholder="Partagez votre expérience avec ce produit..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publier l'avis</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Shipping Tab -->
+            <div class="tab-panel" id="shipping">
+                <h3>Informations de livraison</h3>
+
+                <div class="shipping-options">
+                    <div class="shipping-option">
+                        <div class="shipping-icon">📦</div>
+                        <div class="shipping-details">
+                            <h4>Livraison Standard</h4>
+                            <p>Délai: 3-5 jours ouvrables</p>
+                            <p class="shipping-price">Gratuite dès 50€ d'achat, sinon 4.90€</p>
+                        </div>
+                    </div>
+                    <div class="shipping-option">
+                        <div class="shipping-icon">⚡</div>
+                        <div class="shipping-details">
+                            <h4>Livraison Express</h4>
+                            <p>Délai: 1-2 jours ouvrables</p>
+                            <p class="shipping-price">9.90€</p>
+                        </div>
+                    </div>
+                    <div class="shipping-option">
+                        <div class="shipping-icon">🏪</div>
+                        <div class="shipping-details">
+                            <h4>Retrait en Point Relais</h4>
+                            <p>Délai: 2-4 jours ouvrables</p>
+                            <p class="shipping-price">Gratuit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Politique de retour</h4>
+                <p>Vous disposez de 30 jours pour retourner votre article s'il ne vous convient pas. Le produit doit être retourné dans son état d'origine avec toutes les étiquettes.</p>
+
+                <h4>Suivi de commande</h4>
+                <p>Un numéro de suivi vous sera envoyé par email dès l'expédition de votre commande. Vous pourrez suivre votre colis en temps réel.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Products -->
+<section class="related-products">
+    <div class="container">
+        <h2 class="section-title">Produits similaires</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">👕</div>
+                </div>
+                <div class="product-info-small">
+                    <h3>T-shirt Sport Pro</h3>
+                    <div class="product-rating-small">⭐⭐⭐⭐⭐</div>
+                    <div class="product-price-small">35€</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">👔</div>
+                </div>
+                <div class="product-info-small">
+                    <h3>Polo Élégant</h3>
+                    <div class="product-rating-small">⭐⭐⭐⭐☆</div>
+                    <div class="product-price-small">45€</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">👕</div>
+                </div>
+                <div class="product-info-small">
+                    <h3>T-shirt Rayé</h3>
+                    <div class="product-rating-small">⭐⭐⭐⭐⭐</div>
+                    <div class="product-price-small">32€</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">🧥</div>
+                </div>
+                <div class="product-info-small">
+                    <h3>Veste Casual</h3>
+                    <div class="product-rating-small">⭐⭐⭐⭐⭐</div>
+                    <div class="product-price-small">89€</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>ShopStyle</h4>
+                <p>Votre destination shopping en ligne de confiance depuis 2020</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Livraison</a></li>
+                    <li><a href="#">Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Service Client</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Suivi commande</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopStyle. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

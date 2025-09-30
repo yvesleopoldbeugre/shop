@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier - ShopStyle</title>
+    <link rel="stylesheet" th:href="@{/css/shoppingCart.css}">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">ShopStyle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="products.html">Produits</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="btn-icon">🔍</button>
+                <button class="btn-icon">👤</button>
+                <button class="btn-icon active">🛒 <span class="badge">3</span></button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <div class="container">
+        <a href="index.html">Accueil</a> / <span>Mon Panier</span>
+    </div>
+</div>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Mon Panier</h1>
+        <p>Vérifiez vos articles et procédez au paiement</p>
+    </div>
+</section>
+
+<!-- Cart Progress Steps -->
+<section class="progress-steps">
+    <div class="container">
+        <div class="steps">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Panier</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-label">Livraison</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">Paiement</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cart Content -->
+<section class="cart-section">
+    <div class="container">
+        <div class="cart-layout">
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <div class="cart-header">
+                    <h2>Articles dans votre panier (3)</h2>
+                    <button class="btn-clear-cart">Vider le panier</button>
+                </div>
+
+                <!-- Cart Item 1 -->
+                <div class="cart-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">👕</div>
+                    </div>
+                    <div class="item-details">
+                        <h3>T-shirt Classique Premium</h3>
+                        <p class="item-category">Mode Homme</p>
+                        <div class="item-options">
+                            <span>Couleur: <strong>Bleu Marine</strong></span>
+                            <span>Taille: <strong>M</strong></span>
+                        </div>
+                        <div class="item-stock">✓ En stock</div>
+                    </div>
+                    <div class="item-quantity">
+                        <label>Quantité</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <input type="number" value="2" min="1" max="10" class="qty-input">
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+                    <div class="item-price">
+                        <div class="price-current">30€</div>
+                        <div class="price-old">40€</div>
+                    </div>
+                    <div class="item-total">
+                        <div class="total-label">Total</div>
+                        <div class="total-price">60€</div>
+                    </div>
+                    <button class="btn-remove" title="Supprimer">🗑️</button>
+                </div>
+
+                <!-- Cart Item 2 -->
+                <div class="cart-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">👟</div>
+                    </div>
+                    <div class="item-details">
+                        <h3>Sneakers Running Pro</h3>
+                        <p class="item-category">Chaussures</p>
+                        <div class="item-options">
+                            <span>Couleur: <strong>Noir</strong></span>
+                            <span>Taille: <strong>42</strong></span>
+                        </div>
+                        <div class="item-stock">✓ En stock</div>
+                    </div>
+                    <div class="item-quantity">
+                        <label>Quantité</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="10" class="qty-input">
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+                    <div class="item-price">
+                        <div class="price-current">95€</div>
+                    </div>
+                    <div class="item-total">
+                        <div class="total-label">Total</div>
+                        <div class="total-price">95€</div>
+                    </div>
+                    <button class="btn-remove" title="Supprimer">🗑️</button>
+                </div>
+
+                <!-- Cart Item 3 -->
+                <div class="cart-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">👜</div>
+                    </div>
+                    <div class="item-details">
+                        <h3>Sac à Main Cuir Luxe</h3>
+                        <p class="item-category">Accessoires</p>
+                        <div class="item-options">
+                            <span>Couleur: <strong>Marron</strong></span>
+                        </div>
+                        <div class="item-stock">✓ En stock</div>
+                    </div>
+                    <div class="item-quantity">
+                        <label>Quantité</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="10" class="qty-input">
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+                    <div class="item-price">
+                        <div class="price-current">127€</div>
+                        <div class="price-old">150€</div>
+                    </div>
+                    <div class="item-total">
+                        <div class="total-label">Total</div>
+                        <div class="total-price">127€</div>
+                    </div>
+                    <button class="btn-remove" title="Supprimer">🗑️</button>
+                </div>
+
+                <!-- Continue Shopping -->
+                <div class="continue-shopping">
+                    <a href="products.html" class="btn btn-outline">← Continuer mes achats</a>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h2>Récapitulatif</h2>
+
+                <!-- Promo Code -->
+                <div class="promo-section">
+                    <label>Code promo</label>
+                    <div class="promo-input-group">
+                        <input type="text" placeholder="Entrez votre code" class="promo-input">
+                        <button class="btn-apply">Appliquer</button>
+                    </div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="price-breakdown">
+                    <div class="price-row">
+                        <span>Sous-total (4 articles)</span>
+                        <span>282€</span>
+                    </div>
+                    <div class="price-row discount">
+                        <span>Réduction</span>
+                        <span>-23€</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Livraison</span>
+                        <span class="free">Gratuite</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total</span>
+                        <span class="total-amount">282€</span>
+                    </div>
+                </div>
+
+                <!-- Delivery Info -->
+                <div class="delivery-info">
+                    <h3>📍 Adresse de livraison</h3>
+                    <div class="address-card">
+                        <p><strong>Jean Dupont</strong></p>
+                        <p>123 Rue de la République</p>
+                        <p>75001 Paris, France</p>
+                        <p>Tél: +33 6 12 34 56 78</p>
+                        <button class="btn-edit">Modifier</button>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="payment-methods">
+                    <h3>💳 Mode de paiement</h3>
+
+                    <!-- Payment Option: Online -->
+                    <div class="payment-option">
+                        <input type="radio" id="payment-online" name="payment" checked>
+                        <label for="payment-online">
+                            <div class="payment-header">
+                                <span class="payment-icon">💳</span>
+                                <div>
+                                    <strong>Paiement en ligne</strong>
+                                    <p>Carte bancaire, PayPal</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Online Payment Details -->
+                        <div class="payment-details active" id="online-payment-details">
+                            <div class="card-logos">
+                                <span class="card-logo">💳 VISA</span>
+                                <span class="card-logo">💳 Mastercard</span>
+                                <span class="card-logo">💳 PayPal</span>
+                            </div>
+
+                            <form class="payment-form">
+                                <div class="form-group">
+                                    <label>Numéro de carte</label>
+                                    <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Date d'expiration</label>
+                                        <input type="text" placeholder="MM/AA" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CVV</label>
+                                        <input type="text" placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nom sur la carte</label>
+                                    <input type="text" placeholder="JEAN DUPONT">
+                                </div>
+                                <div class="secure-badge">
+                                    🔒 Paiement 100% sécurisé
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Payment Option: Cash -->
+                    <div class="payment-option">
+                        <input type="radio" id="payment-cash" name="payment">
+                        <label for="payment-cash">
+                            <div class="payment-header">
+                                <span class="payment-icon">💵</span>
+                                <div>
+                                    <strong>Paiement en espèces</strong>
+                                    <p>À la livraison</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Cash Payment Details -->
+                        <div class="payment-details" id="cash-payment-details">
+                            <div class="cash-info">
+                                <p><strong>Paiement à la réception</strong></p>
+                                <p>Vous paierez votre commande en espèces lors de la livraison.</p>
+                                <ul>
+                                    <li>✓ Préparez le montant exact si possible</li>
+                                    <li>✓ Le livreur vous remettra votre facture</li>
+                                    <li>✓ Frais supplémentaires de 2€ pour ce mode de paiement</li>
+                                </ul>
+                                <div class="cash-total">
+                                    <strong>Total à payer:</strong>
+                                    <span class="cash-amount">284€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="terms">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>J'accepte les <a href="#">conditions générales de vente</a></span>
+                    </label>
+                </div>
+
+                <!-- Checkout Button -->
+                <button class="btn btn-checkout">
+                    <span>🛒</span>
+                    Confirmer la commande
+                </button>
+
+                <!-- Trust Badges -->
+                <div class="trust-badges">
+                    <div class="badge-item">
+                        <span>🔒</span>
+                        <p>Paiement sécurisé</p>
+                    </div>
+                    <div class="badge-item">
+                        <span>🚚</span>
+                        <p>Livraison rapide</p>
+                    </div>
+                    <div class="badge-item">
+                        <span>↩️</span>
+                        <p>Retours gratuits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recommended Products -->
+<section class="recommended-section">
+    <div class="container">
+        <h2 class="section-title">Produits recommandés</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">🧥</div>
+                </div>
+                <div class="product-info">
+                    <h3>Veste Casual</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="product-price">89€</div>
+                    <button class="btn-add-small">Ajouter</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">👖</div>
+                </div>
+                <div class="product-info">
+                    <h3>Jean Slim</h3>
+                    <div class="product-rating">⭐⭐⭐⭐☆</div>
+                    <div class="product-price">65€</div>
+                    <button class="btn-add-small">Ajouter</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">🕶️</div>
+                </div>
+                <div class="product-info">
+                    <h3>Lunettes de Soleil</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="product-price">45€</div>
+                    <button class="btn-add-small">Ajouter</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">⌚</div>
+                </div>
+                <div class="product-info">
+                    <h3>Montre Sport</h3>
+                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="product-price">199€</div>
+                    <button class="btn-add-small">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>ShopStyle</h4>
+                <p>Votre destination shopping en ligne de confiance depuis 2020</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Livraison</a></li>
+                    <li><a href="#">Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Service Client</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Suivi commande</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopStyle. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Toggle payment details
+    const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    paymentRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            document.querySelectorAll('.payment-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            if (this.id === 'payment-online') {
+                document.getElementById('online-payment-details').classList.add('active');
+            } else if (this.id === 'payment-cash') {
+                document.getElementById('cash-payment-details').classList.add('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

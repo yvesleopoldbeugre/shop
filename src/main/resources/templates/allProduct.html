@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Produits - ShopStyle</title>
+    <link rel="icon" type="image/x-icon" href="/logo/logo.png">
+    <link rel="stylesheet" th:href="@{/css/product.css}">
+</head>
+<body>
+<!-- Header & Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">ShopStyle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="products.html" class="active">Produits</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="btn-icon">🔍</button>
+                <button class="btn-icon">👤</button>
+                <button class="btn-icon">🛒 <span class="badge">3</span></button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <div class="container">
+        <a href="index.html">Accueil</a> / <span>Produits</span>
+    </div>
+</div>
+
+<!-- Page Title -->
+<section class="page-header">
+    <div class="container">
+        <h1>Tous nos Produits</h1>
+        <p>Découvrez notre sélection complète de produits de qualité</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar">
+                <div class="filter-section">
+                    <h3>Catégories</h3>
+                    <ul class="filter-list">
+                        <li>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Tous les produits</span>
+                                <span class="count">(48)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Mode Homme</span>
+                                <span class="count">(12)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Mode Femme</span>
+                                <span class="count">(18)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Électronique</span>
+                                <span class="count">(8)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Maison & Déco</span>
+                                <span class="count">(10)</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Prix</h3>
+                    <div class="price-range">
+                        <input type="range" min="0" max="500" value="250" class="slider">
+                        <div class="price-labels">
+                            <span>0€</span>
+                            <span>500€</span>
+                        </div>
+                        <p class="price-value">Maximum: <strong>250€</strong></p>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Taille</h3>
+                    <div class="size-options">
+                        <button class="size-btn">XS</button>
+                        <button class="size-btn">S</button>
+                        <button class="size-btn active">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                        <button class="size-btn">XXL</button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Couleur</h3>
+                    <div class="color-options">
+                        <button class="color-btn" style="background: #000;" title="Noir"></button>
+                        <button class="color-btn" style="background: #fff; border: 1px solid #ddd;" title="Blanc"></button>
+                        <button class="color-btn" style="background: #ff6b6b;" title="Rouge"></button>
+                        <button class="color-btn" style="background: #4ecdc4;" title="Bleu"></button>
+                        <button class="color-btn active" style="background: #95e1d3;" title="Vert"></button>
+                        <button class="color-btn" style="background: #f38181;" title="Rose"></button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Marque</h3>
+                    <ul class="filter-list">
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Nike</span>
+                                <span class="count">(8)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Adidas</span>
+                                <span class="count">(6)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>Zara</span>
+                                <span class="count">(12)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox">
+                                <span>H&M</span>
+                                <span class="count">(10)</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <button class="btn-reset">Réinitialiser les filtres</button>
+            </aside>
+
+            <!-- Products Grid -->
+            <main class="products-main">
+                <!-- Toolbar -->
+                <div class="toolbar">
+                    <div class="results-info">
+                        <p>Affichage de <strong>1-12</strong> sur <strong>48</strong> résultats</p>
+                    </div>
+                    <div class="toolbar-actions">
+                        <div class="view-toggle">
+                            <button class="view-btn active" title="Grille">⊞</button>
+                            <button class="view-btn" title="Liste">☰</button>
+                        </div>
+                        <select class="sort-select">
+                            <option>Trier par défaut</option>
+                            <option>Prix croissant</option>
+                            <option>Prix décroissant</option>
+                            <option>Nouveautés</option>
+                            <option>Popularité</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid">
+                    <!-- Product Card 1 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-sale">-25%</span>
+                            <span class="badge-new">Nouveau</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">👕</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Mode Homme</div>
+                            <h3>T-shirt Classique Premium</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(24 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-old">40€</span>
+                                <span class="price-new">30€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-hot">🔥 Tendance</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">👟</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Chaussures</div>
+                            <h3>Sneakers Running Pro</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(89 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">95€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">👗</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Mode Femme</div>
+                            <h3>Robe Élégante d'Été</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span>(15 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">65€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-sale">-15%</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">👜</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Accessoires</div>
+                            <h3>Sac à Main Cuir Luxe</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(42 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-old">150€</span>
+                                <span class="price-new">127€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-new">Nouveau</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">⌚</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Électronique</div>
+                            <h3>Montre Connectée Sport</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(67 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">199€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">🕶️</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Accessoires</div>
+                            <h3>Lunettes de Soleil Style</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span>(31 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">45€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 7 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-sale">-30%</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">👔</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Mode Homme</div>
+                            <h3>Costume Élégant 2 Pièces</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(19 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-old">280€</span>
+                                <span class="price-new">196€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 8 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-hot">🔥 Tendance</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">🎧</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Électronique</div>
+                            <h3>Écouteurs Sans Fil Premium</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(156 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">89€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 9 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">💄</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Beauté</div>
+                            <h3>Kit Maquillage Professionnel</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(73 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">55€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 10 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-sale">-20%</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">🧥</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Mode Femme</div>
+                            <h3>Veste en Jean Vintage</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span>(28 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-old">80€</span>
+                                <span class="price-new">64€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 11 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">📱</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Électronique</div>
+                            <h3>Coque Téléphone Luxe</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span>(94 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">25€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 12 -->
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge-new">Nouveau</span>
+                        </div>
+                        <div class="product-image">
+                            <div class="image-placeholder">🎒</div>
+                            <div class="product-overlay">
+                                <button class="btn-quick-view">Aperçu rapide</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Accessoires</div>
+                            <h3>Sac à Dos Urban Style</h3>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span>(36 avis)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-new">75€</span>
+                            </div>
+                            <button class="btn-add-cart">
+                                <span>🛒</span> Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="page-btn" disabled>← Précédent</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn">Suivant →</button>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>ShopStyle</h4>
+                <p>Votre destination shopping en ligne de confiance depuis 2020</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Livraison</a></li>
+                    <li><a href="#">Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Service Client</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Suivi commande</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopStyle. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
