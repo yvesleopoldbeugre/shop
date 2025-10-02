@@ -55,9 +55,11 @@ public class SecurityConfig {
                                                 "/images/**",
                                                 "/logo/**",
                                                 "/",
-                                                "/product-by-category",
+                                                "/product-by-category/**",
+                                                "/all-product",
                                                 "/info-product",
-                                                "/shopping-cart"
+                                                "/shopping-cart",
+                                                "/dashboard"
                                         ).permitAll()
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 

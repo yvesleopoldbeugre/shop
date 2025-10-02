@@ -8,24 +8,7 @@
 </head>
 <body>
 <!-- Header & Navigation -->
-<header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">ShopStyle</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="products.html">Produits</a></li>
-                <li><a href="#categories">Catégories</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-icons">
-                <button class="btn-icon">🔍</button>
-                <button class="btn-icon">👤</button>
-                <button class="btn-icon active">🛒 <span class="badge">3</span></button>
-            </div>
-        </div>
-    </nav>
-</header>
+<div th:replace="fragments/header :: site-header"></div>
 
 <!-- Breadcrumb -->
 <div class="breadcrumb">
@@ -402,45 +385,7 @@
 </section>
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>ShopStyle</h4>
-                <p>Votre destination shopping en ligne de confiance depuis 2020</p>
-            </div>
-            <div class="footer-col">
-                <h4>Liens Rapides</h4>
-                <ul>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Livraison</a></li>
-                    <li><a href="#">Retours</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Service Client</h4>
-                <ul>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Suivi commande</a></li>
-                    <li><a href="#">Conditions</a></li>
-                    <li><a href="#">Confidentialité</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Suivez-nous</h4>
-                <div class="social-links">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Twitter</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 ShopStyle. Tous droits réservés.</p>
-        </div>
-    </div>
-</footer>
+<div th:replace="fragments/footer :: site-footer"></div>
 
 <script>
     // Toggle payment details

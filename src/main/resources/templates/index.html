@@ -9,24 +9,7 @@
 </head>
 <body>
 <!-- Header & Navigation -->
-<header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">ShopStyle</div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#produits">Produits</a></li>
-                <li><a href="#categories">Catégories</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-icons">
-                <button class="btn-icon">🔍</button>
-                <button class="btn-icon">👤</button>
-                <button class="btn-icon">🛒 <span class="badge">0</span></button>
-            </div>
-        </div>
-    </nav>
-</header>
+<div th:replace="fragments/header :: site-header"></div>
 
 <!-- Hero Section -->
 <section class="hero" id="accueil">
@@ -47,26 +30,34 @@
     <div class="container">
         <h2 class="section-title">Nos Catégories</h2>
         <div class="category-grid">
-            <div class="category-card">
-                <div class="category-icon">👔</div>
-                <h3>Mode Homme</h3>
-                <p>Tendances & Styles</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">👗</div>
-                <h3>Mode Femme</h3>
-                <p>Élégance & Confort</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">📱</div>
-                <h3>Électronique</h3>
-                <p>High-Tech</p>
-            </div>
-            <div class="category-card">
-                <div class="category-icon">🏠</div>
-                <h3>Maison & Déco</h3>
-                <p>Intérieur Design</p>
-            </div>
+            <a th:href="@{/product-by-category/{slug}(slug='mode-homme')}" class="category-card">
+                <div>
+                    <div class="category-icon">👔</div>
+                    <h3>Mode Homme</h3>
+                    <p>Tendances & Styles</p>
+                </div>
+            </a>
+            <a th:href="@{/product-by-category/{slug}(slug='mode-femme')}" class="category-card">
+                <div>
+                    <div class="category-icon">👗</div>
+                    <h3>Mode Femme</h3>
+                    <p>Élégance & Confort</p>
+                </div>
+            </a>
+            <a th:href="@{/product-by-category/{slug}(slug='electronique')}" class="category-card">
+                <div>
+                    <div class="category-icon">📱</div>
+                    <h3>Électronique</h3>
+                    <p>High-Tech</p>
+                </div>
+            </a>
+            <a th:href="@{/product-by-category/{slug}(slug='home-deco')}" class="category-card">
+                <div>
+                    <div class="category-icon">🏠</div>
+                    <h3>Maison & Déco</h3>
+                    <p>Intérieur Design</p>
+                </div>
+            </a>
         </div>
     </div>
 </section>
@@ -142,44 +133,6 @@
 </section>
 
 <!-- Footer -->
-<footer id="contact">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>ShopStyle</h4>
-                <p>Votre destination shopping en ligne de confiance depuis 2020</p>
-            </div>
-            <div class="footer-col">
-                <h4>Liens Rapides</h4>
-                <ul>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Livraison</a></li>
-                    <li><a href="#">Retours</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Service Client</h4>
-                <ul>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Suivi commande</a></li>
-                    <li><a href="#">Conditions</a></li>
-                    <li><a href="#">Confidentialité</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Suivez-nous</h4>
-                <div class="social-links">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Twitter</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 ShopStyle. Tous droits réservés.</p>
-        </div>
-    </div>
-</footer>
+<div th:replace="fragments/footer :: site-footer"></div>
 </body>
 </html>

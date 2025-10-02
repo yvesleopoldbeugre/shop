@@ -20,223 +20,34 @@ import java.util.UUID;
 public class ProductViewImpl implements ProductView {
     private final ProduitService produitService;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index() {
         return "index";
     }
 
-    @RequestMapping("/all-product")
+    @GetMapping("/all-product")
     public String allProduct(){
         return "allProduct";
     }
 
-    @RequestMapping("/info-product")
+    @GetMapping("/product-by-category/{slug}")
+    public String productByCategory(@PathVariable String slug){
+        return "allProduct";
+    }
+
+    @GetMapping("/info-product")
     public String infoProduct(){
         return "infoProduct";
     }
 
-    @RequestMapping("/shopping-cart")
+    @GetMapping("/shopping-cart")
     public String shoppingCart(){
         return "shoppingCart";
     }
 
-    // Méthode pour afficher la liste des produits
-    @RequestMapping("/listeAvecCon")
-    public String liste(Model model)
-    {
-        return listePaginee(model, 0, 4, "id", "NULL");
-    }
-    @RequestMapping("/listeSansCon")
-    public String liste2(Model model)
-    {
-        return listePaginee(model, 0, 4, "id", "NULL");
-    }
-
-
-
-
-    // Méthode pour aller à la page de création d'un nouveau produit
-    @RequestMapping("/creation/")
-    public String productCreate()
-    {
-        return "create";
-    }
-
-    // Méthode pour aller à la page de mise à jour d'un produit
-    @RequestMapping("/maj/{id}")
-    public String update(Model model, @PathVariable Integer id)
-    {
-        Produit produit = produitService.trouverParId(id);
-        if (produit == null)
-        {
-            return listePaginee( model, 0, 4, "id", "Le produit sélectionné n'existe pas dans la base de données!");
-        }
-        model.addAttribute("produit", produit);
-        return "update";
-    }
-
-
-    // Méthode pour lire la liste des produits avec pagination
-    @RequestMapping(value = {"/liste/{page}/{pageSize}", "/liste/{page}/{pageSize}/{sortBy}"}, method = RequestMethod.GET)
-    public String listePaginee(Model model, @PathVariable int page, @PathVariable int pageSize, @PathVariable String sortBy,@RequestParam( required = false, defaultValue = "NULL") String param)
-    {
-        // Vérifications et gestion des erreurs
-
-        if (page < 0 || pageSize < 1)
-        {
-            model.addAttribute("errorMessage", "Page ou taille de page non valide");
-            return "error";
-        }
-
-        if (page < 0)
-        {
-            model.addAttribute("errorMessage", "Cette page n'existe pas!!!");
-            return "error";
-        }
-        Page<Produit> produitsPage = produitService.lireProduitsPagine(page, pageSize, sortBy);
-        if (page > produitsPage.getTotalPages())
-        {
-            model.addAttribute("errorMessage", "Cette page n'existe pas!!!");
-            return "error";
-        }
-        // Suite du code
-        String imagePath=System.getProperty("user.dir") + "/Gestion_Produit/src/main/resources/images";
-        if (!"NULL".equals(param))
-        {
-            model.addAttribute("message", param);
-        }
-        model.addAttribute("imagePath", imagePath);
-        model.addAttribute("produits", produitsPage);
-        model.addAttribute("sortBy", sortBy);
-        return "list";
-    }
-
-
-    // Méthode pour créer un produit avec une image
-    @PostMapping("create")
-    public String creer(@ModelAttribute Produit produit, @RequestParam("imageFile") MultipartFile imageFile, Model model) throws IOException
-    {
-        // Code pour créer le produit
-        produit.setImage(imageFile.getOriginalFilename());;
-
-        if (!produit.getImageFile().isEmpty())
-        {
-            String nomImage = saveImage(produit.getImageFile());
-            produit.setImage(nomImage);
-        }
-
-        produitService.creer(produit);
-
-
-        return listePaginee( model, 0, 4, "id", "Le produit a bien été créé!!! \n Veuillez réactualiser la page pour charger les images");
-
-    }
-
-    // Méthode pour sauvegarder une image
-    private String saveImage(MultipartFile imageFile) throws IllegalStateException, IOException
-    {
-        // Code pour sauvegarder l'image
-        // Générer un nom de fichier unique pour l'image
-        String fileName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
-        // Définir le chemin d'accès complet pour sauvegarder l'image
-        String filePath = System.getProperty("user.dir") + "/Gestion_Produit/src/main/resources/static/Images/" + fileName;
-        // Créer un objet File avec le chemin d'accès complet
-        File dest = new File(filePath);
-        // Sauvegarder l'image sur le système de fichiers
-        imageFile.transferTo(dest);
-        // Retourner le chemin d'accès de l'image sauvegardée
-        return fileName;
-    }
-
-
-
-    // Méthode pour récupérer toute la liste des produits
-    @GetMapping(value = "/read")
-    public List<Produit> read()
-    {
-        return produitService.lire();
-    }
-
-    // Méthode pour mettre à jour un produit avec une image
-    @PostMapping("/update/{id}")
-    public String update(@ModelAttribute Produit produit, @RequestParam("imageFile") MultipartFile imageFile, Model model) throws IOException
-    {
-        Produit ancienProduit = produitService.trouverParId(produit.getId());
-        if (ancienProduit != null)
-        {
-            String ancienNomImage = ancienProduit.getImage();
-            if (ancienNomImage != null)
-            {
-                deleteImage(ancienNomImage);
-            }
-            if (!imageFile.isEmpty())
-            {
-                String nouveauNomImage = saveImage(imageFile);
-                produit.setImage(nouveauNomImage);
-            }
-            produitService.modifier(produit.getId(), produit);
-        }
-        return listePaginee( model, 0, 4, "id", "Le produit a bien été mis à jour!!!");
-    }
-
-
-    // Méthode pour supprimer une image du systeme de fichier
-    public void deleteImage(String nomImage)
-    {
-        String cheminFichier = System.getProperty("user.dir") + "/Gestion_Produit/src/main/resources/static/Images/" + nomImage;
-
-        File fichierImage = new File(cheminFichier);
-
-        if (fichierImage.exists())
-        {
-            fichierImage.delete();
-
-        }
-    }
-
-
-
-    // Méthode pour supprimer un produit de la bdd
-    @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable Integer id)
-    {
-        if (produitService.trouverParId(id) != null)
-        {
-            produitService.supprimer(id);
-            return true;
-        }
-        return false;
-    }
-
-    // Méthode pour supprimer un produit depuis l'interface et rediriger vers l'accueil
-    @RequestMapping("/delete/{id}")
-    public String suppression(Model model,@PathVariable Integer id)
-    {
-        if(delete(id))
-        {
-            return listePaginee(model, 0, 4, "id", "Suppression réussie");
-        }
-        else
-        {
-            model.addAttribute("errorMessage", "Suppression impossible");
-            return "error";
-        }
-    }
-
-
-    // Méthode pour rechercher des produits
-    @PostMapping("/recherche")
-    public String recherche(@RequestParam("recherche") String recherche, @RequestParam("critere") String critere, Model model)
-    {
-        Page<Produit> produits = produitService.recherche(recherche, critere);
-        if(produits.getSize()==0)
-        {
-            return listePaginee( model, 0, 4, "id", "Aucun résultat pour votre recherche!!");
-        }
-        model.addAttribute("produits", produits);
-        return "resultRecherche";
-
-
+    @GetMapping("/dashboard")
+    public String dashboard(){
+        return "dashboard";
     }
 }
 

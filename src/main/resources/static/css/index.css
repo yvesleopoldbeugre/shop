@@ -182,6 +182,8 @@ header {
     background: white;
     padding: 2rem;
     border-radius: 15px;
+    text-decoration: none;
+    color: inherit;
     text-align: center;
     transition: all 0.3s;
     cursor: pointer;

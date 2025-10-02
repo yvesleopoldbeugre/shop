@@ -1,0 +1,18 @@
+<header th:fragment="site-header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">ShopStyle</div>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Accueil</a></li>
+                <li><a th:href="@{/all-product}">Produits</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="btn-icon">🔍</button>
+                <a th:href="@{/dashboard}"><button class="btn-icon">👤</button></a>
+                <a th:href="@{/shopping-cart}"><button class="btn-icon">🛒 <span class="badge">0</span></button></a>
+            </div>
+        </div>
+    </nav>
+</header>

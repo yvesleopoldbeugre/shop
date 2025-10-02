@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gestion des Produits</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo">ShopStyle Admin</div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">📊</span>
+            <span class="nav-text">Tableau de bord</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span class="nav-text">Produits</span>
+            <span class="nav-badge">248</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🏷️</span>
+            <span class="nav-text">Catégories</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span class="nav-text">Commandes</span>
+            <span class="nav-badge alert">12</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">👥</span>
+            <span class="nav-text">Clients</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📈</span>
+            <span class="nav-text">Statistiques</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-text">Paramètres</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+                <div class="user-name">Admin User</div>
+                <div class="user-role">Administrateur</div>
+            </div>
+        </div>
+        <button class="btn-logout">🚪</button>
+    </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button class="btn-menu-toggle">☰</button>
+            <div class="search-box">
+                <input type="text" placeholder="Rechercher un produit...">
+                <button class="btn-search">🔍</button>
+            </div>
+        </div>
+        <div class="topbar-right">
+            <button class="btn-notification">
+                🔔
+                <span class="notification-badge">5</span>
+            </button>
+            <button class="btn-messages">
+                ✉️
+                <span class="notification-badge">3</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="stat-icon">📦</div>
+                <div class="stat-details">
+                    <div class="stat-value">248</div>
+                    <div class="stat-label">Total Produits</div>
+                </div>
+                <div class="stat-trend positive">+12%</div>
+            </div>
+
+            <div class="stat-card green">
+                <div class="stat-icon">💰</div>
+                <div class="stat-details">
+                    <div class="stat-value">45,231€</div>
+                    <div class="stat-label">Ventes ce mois</div>
+                </div>
+                <div class="stat-trend positive">+23%</div>
+            </div>
+
+            <div class="stat-card orange">
+                <div class="stat-icon">🛒</div>
+                <div class="stat-details">
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Commandes</div>
+                </div>
+                <div class="stat-trend positive">+8%</div>
+            </div>
+
+            <div class="stat-card red">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-details">
+                    <div class="stat-value">23</div>
+                    <div class="stat-label">Stock faible</div>
+                </div>
+                <div class="stat-trend negative">-5%</div>
+            </div>
+        </div>
+
+        <!-- Products Management Section -->
+        <div class="section-header">
+            <h2>Gestion des Produits</h2>
+            <div class="section-actions">
+                <button class="btn btn-secondary" onclick="toggleFilters()">
+                    🔍 Filtres
+                </button>
+                <button class="btn btn-primary" onclick="openAddProductModal()">
+                    ➕ Ajouter un produit
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters Panel -->
+        <div class="filters-panel" id="filtersPanel">
+            <div class="filter-group">
+                <label>Catégorie</label>
+                <select class="filter-select">
+                    <option>Toutes les catégories</option>
+                    <option>Mode Homme</option>
+                    <option>Mode Femme</option>
+                    <option>Électronique</option>
+                    <option>Maison & Déco</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Statut</label>
+                <select class="filter-select">
+                    <option>Tous les statuts</option>
+                    <option>En stock</option>
+                    <option>Stock faible</option>
+                    <option>Rupture de stock</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Prix</label>
+                <input type="text" placeholder="Min" class="filter-input">
+                <input type="text" placeholder="Max" class="filter-input">
+            </div>
+            <button class="btn btn-outline">Réinitialiser</button>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-container">
+            <table class="products-table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Image</th>
+                    <th>Nom du produit</th>
+                    <th>Catégorie</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Statut</th>
+                    <th>Date d'ajout</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <div class="product-image-cell">
+                            <div class="product-thumb">👕</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-name">T-shirt Classique Premium</div>
+                        <div class="product-sku">SKU: TSH-001</div>
+                    </td>
+                    <td><span class="category-tag">Mode Homme</span></td>
+                    <td class="price-cell">30€</td>
+                    <td>
+                        <div class="stock-info">
+                            <span class="stock-value">248</span>
+                            <div class="stock-bar">
+                                <div class="stock-fill high" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status-badge active">En stock</span></td>
+                    <td>15/03/2024</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action edit" title="Modifier">✏️</button>
+                            <button class="btn-action view" title="Voir">👁️</button>
+                            <button class="btn-action delete" title="Supprimer">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <div class="product-image-cell">
+                            <div class="product-thumb">👟</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-name">Sneakers Running Pro</div>
+                        <div class="product-sku">SKU: SNK-002</div>
+                    </td>
+                    <td><span class="category-tag">Chaussures</span></td>
+                    <td class="price-cell">95€</td>
+                    <td>
+                        <div class="stock-info">
+                            <span class="stock-value">45</span>
+                            <div class="stock-bar">
+                                <div class="stock-fill medium" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status-badge active">En stock</span></td>
+                    <td>14/03/2024</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action edit" title="Modifier">✏️</button>
+                            <button class="btn-action view" title="Voir">👁️</button>
+                            <button class="btn-action delete" title="Supprimer">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <div class="product-image-cell">
+                            <div class="product-thumb">👗</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-name">Robe Élégante d'Été</div>
+                        <div class="product-sku">SKU: DRS-003</div>
+                    </td>
+                    <td><span class="category-tag">Mode Femme</span></td>
+                    <td class="price-cell">65€</td>
+                    <td>
+                        <div class="stock-info">
+                            <span class="stock-value">12</span>
+                            <div class="stock-bar">
+                                <div class="stock-fill low" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status-badge warning">Stock faible</span></td>
+                    <td>13/03/2024</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action edit" title="Modifier">✏️</button>
+                            <button class="btn-action view" title="Voir">👁️</button>
+                            <button class="btn-action delete" title="Supprimer">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <div class="product-image-cell">
+                            <div class="product-thumb">👜</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-name">Sac à Main Cuir Luxe</div>
+                        <div class="product-sku">SKU: BAG-004</div>
+                    </td>
+                    <td><span class="category-tag">Accessoires</span></td>
+                    <td class="price-cell">127€</td>
+                    <td>
+                        <div class="stock-info">
+                            <span class="stock-value">0</span>
+                            <div class="stock-bar">
+                                <div class="stock-fill empty" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status-badge inactive">Rupture</span></td>
+                    <td>12/03/2024</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action edit" title="Modifier">✏️</button>
+                            <button class="btn-action view" title="Voir">👁️</button>
+                            <button class="btn-action delete" title="Supprimer">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <div class="product-image-cell">
+                            <div class="product-thumb">⌚</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-name">Montre Connectée Sport</div>
+                        <div class="product-sku">SKU: WAT-005</div>
+                    </td>
+                    <td><span class="category-tag">Électronique</span></td>
+                    <td class="price-cell">199€</td>
+                    <td>
+                        <div class="stock-info">
+                            <span class="stock-value">156</span>
+                            <div class="stock-bar">
+                                <div class="stock-fill high" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status-badge active">En stock</span></td>
+                    <td>11/03/2024</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-action edit" title="Modifier">✏️</button>
+                            <button class="btn-action view" title="Voir">👁️</button>
+                            <button class="btn-action delete" title="Supprimer">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn" disabled>← Précédent</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn">Suivant →</button>
+        </div>
+    </div>
+</main>
+
+<!-- Add/Edit Product Modal -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Ajouter un nouveau produit</h2>
+            <button class="btn-close" onclick="closeProductModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <form class="product-form">
+                <div class="form-row">
+                    <div class="form-group full">
+                        <label>Nom du produit *</label>
+                        <input type="text" placeholder="Ex: T-shirt Premium" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Catégorie *</label>
+                        <select required>
+                            <option value="">Sélectionner une catégorie</option>
+                            <option>Mode Homme</option>
+                            <option>Mode Femme</option>
+                            <option>Électronique</option>
+                            <option>Maison & Déco</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>SKU *</label>
+                        <input type="text" placeholder="Ex: TSH-001" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prix (€) *</label>
+                        <input type="number" placeholder="0.00" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Prix promotionnel (€)</label>
+                        <input type="number" placeholder="0.00" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Stock *</label>
+                        <input type="number" placeholder="0" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full">
+                        <label>Description courte</label>
+                        <textarea rows="3" placeholder="Décrivez brièvement le produit..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full">
+                        <label>Description complète</label>
+                        <textarea rows="5" placeholder="Description détaillée du produit..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full">
+                        <label>Images du produit</label>
+                        <div class="image-upload">
+                            <div class="upload-area">
+                                <span class="upload-icon">📷</span>
+                                <p>Glissez-déposez ou cliquez pour ajouter des images</p>
+                                <input type="file" multiple accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Marque</label>
+                        <input type="text" placeholder="Ex: Nike">
+                    </div>
+                    <div class="form-group">
+                        <label>Poids (kg)</label>
+                        <input type="number" placeholder="0.00" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full">
+                        <label>Tags (séparés par des virgules)</label>
+                        <input type="text" placeholder="Ex: sport, été, tendance">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span>Produit en vedette</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span>Publier immédiatement</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeProductModal()">Annuler</button>
+            <button class="btn btn-primary">Enregistrer le produit</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Toggle sidebar on mobile
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('active');
+    }
+
+    // Toggle filters panel
+    function toggleFilters() {
+        const panel = document.getElementById('filtersPanel');
+        panel.classList.toggle('active');
+    }
+
+    // Open add product modal
+    function openAddProductModal() {
+        document.getElementById('productModal').classList.add('active');
+    }
+
+    // Close product modal
+    function closeProductModal() {
+        document.getElementById('productModal').classList.remove('active');
+    }
+
+    // Menu toggle button
+    document.querySelector('.btn-menu-toggle').addEventListener('click', toggleSidebar);
+
+    // Close modal when clicking outside
+    document.getElementById('productModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeProductModal();
+        }
+    });
+</script>
+</body>
+</html>
